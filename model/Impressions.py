@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, Double
 
-from sqlalchemy.orm import relationship, joinedload, declarative_base
-
-from config.config import Base
+from config.db.mysql.config import Base
 
 
 class Impressions(Base):
