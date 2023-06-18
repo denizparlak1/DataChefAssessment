@@ -5,11 +5,13 @@ from fastapi import Cookie
 from config.db.redis.redis import get_redis_client
 from starlette.responses import Response
 
+
 def get_unique_id(unique_id: str):
     # Use the function to get the Redis client
     redis_client = get_redis_client()
-
+    print(redis_client)
     if not unique_id:
+        print("not içi")
         # If the unique ID is not provided, return None
         return None, None
 
@@ -33,7 +35,6 @@ def get_unique_id(unique_id: str):
 def update_banner_ids(unique_id: str, banner_ids: List[int]):
     print("başladım")
     try:
-
         if unique_id is not None:
             # Use the function to get the Redis client
             redis_client = get_redis_client()
