@@ -5,8 +5,7 @@ from fastapi import Cookie
 from config.db.redis.redis import get_redis_client
 from starlette.responses import Response
 
-
-async def get_unique_id(unique_id: str):
+def get_unique_id(unique_id: str):
     # Use the function to get the Redis client
     redis_client = get_redis_client()
 
