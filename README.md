@@ -4,13 +4,6 @@
 
 Banner Advertising Management System is a web application designed to manage and optimize banner advertisements. The application allows users to view and analyze the performance of different banners within advertising campaigns. It uses various metrics such as clicks and revenue to help users make data-driven decisions for their advertising strategies.
 
-## Features
-
-- **Campaign Management**: Create and manage advertising campaigns.
-- **Banner Performance Analysis**: Evaluate the performance of different banners based on revenue and other metrics.
-- **Dynamic Banner Selection**: Select and display banners dynamically based on performance and user preferences.
-- **Reporting and Analytics**: Generate reports and analyze data for insights into banner performance.
-
 ## Getting Started
 
 ### Prerequisites

@@ -9,7 +9,7 @@ from starlette.responses import Response
 def get_unique_id(unique_id: str):
     # Use the function to get the Redis client
     redis_client = get_redis_client()
-    print(redis_client)
+
     if not unique_id:
         print("not içi")
         # If the unique ID is not provided, return None
