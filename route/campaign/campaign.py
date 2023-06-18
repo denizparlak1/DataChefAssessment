@@ -29,6 +29,6 @@ async def get_banner_count(request: Request, campaign_id: int, db: Session = Dep
 
     image_urls = Images.get_image_urls(top_banners, db)
 
-    update_banner_ids(unique_id, top_banners)
+    await update_banner_ids(unique_id, top_banners)
 
     return image_urls

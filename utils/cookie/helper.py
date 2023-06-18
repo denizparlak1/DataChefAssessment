@@ -6,7 +6,7 @@ from config.db.redis.redis import get_redis_client
 from starlette.responses import Response
 
 
-def get_unique_id(unique_id: str):
+async def get_unique_id(unique_id: str):
     # Use the function to get the Redis client
     redis_client = get_redis_client()
 
@@ -32,6 +32,7 @@ def get_unique_id(unique_id: str):
 
 
 def update_banner_ids(unique_id: str, banner_ids: List[int]):
+    print("başladım")
     try:
 
         if unique_id is not None:
