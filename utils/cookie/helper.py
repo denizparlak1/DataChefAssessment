@@ -31,11 +31,11 @@ def get_unique_id(unique_id: str):
         return unique_id, []
 
 
-
 def update_banner_ids(unique_id: str, banner_ids: List[int]):
     if unique_id is not None:
         # Use the function to get the Redis client
         redis_client = get_redis_client()
+        print(redis_client)
 
         # Convert banner_ids to a JSON string
         banner_ids_json = json.dumps(banner_ids)
