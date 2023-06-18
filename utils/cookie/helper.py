@@ -27,18 +27,23 @@ def get_unique_id(unique_id: str):
     else:
         # If the unique ID does not exist, save it in Redis with an empty list as the value
         redis_client.set(unique_id, json.dumps([]))
-
+        print("çalıştım")
         return unique_id, []
 
 
 def update_banner_ids(unique_id: str, banner_ids: List[int]):
-    if unique_id is not None:
-        # Use the function to get the Redis client
-        redis_client = get_redis_client()
-        print(redis_client)
+    try:
 
-        # Convert banner_ids to a JSON string
-        banner_ids_json = json.dumps(banner_ids)
+        if unique_id is not None:
+            # Use the function to get the Redis client
+            redis_client = get_redis_client()
+            print(redis_client)
 
-        # Set the banner IDs in Redis with the unique ID as the key
-        redis_client.set(unique_id, banner_ids_json)
+            # Convert banner_ids to a JSON string
+            banner_ids_json = json.dumps(banner_ids)
+
+            # Set the banner IDs in Redis with the unique ID as the key
+            redis_client.set(unique_id, banner_ids_json)
+
+    except Exception as e:
+        print(e)
