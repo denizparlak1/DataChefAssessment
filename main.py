@@ -6,7 +6,7 @@ from route.upload import upload_data
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",
+    "http://ec2-3-249-239-49.eu-west-1.compute.amazonaws.com:3000",
 ]
 
 app.add_middleware(
