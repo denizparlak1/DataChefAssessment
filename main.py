@@ -7,7 +7,7 @@ app = FastAPI()
 
 origins = [
     #"http://ec2-3-249-239-49.eu-west-1.compute.amazonaws.com:3000",
-    "http://ip-10-0-9-248:3000"
+    "http://ec2-52-51-114-67.eu-west-1.compute.amazonaws.com:3000"
 ]
 
 app.add_middleware(
