@@ -5,13 +5,16 @@ from route.campaign import campaign
 from route.upload import upload_data
 app = FastAPI()
 
-origins = ["*"]
+origins = [
+    "http://ec2-52-51-114-67.eu-west-1.compute.amazonaws.com:3000/",
+
+]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["*"],  # This allows all methods, you can list specific methods if needed
     allow_headers=["*"],
 )
 
