@@ -14,7 +14,7 @@ router = APIRouter(prefix="/campaigns")
 @router.get("/{campaign_id}/")
 async def get_banner_count(request: Request, campaign_id: int, db: Session = Depends(get_db)):
     quarter = await get_quarter()
-    
+
     print(request.cookies.get("unique_id"))
     unique_id, exclude_banner_ids = get_unique_id(request.cookies.get("unique_id"))
 
