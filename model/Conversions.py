@@ -79,7 +79,7 @@ class Conversions(Base):
             return None
 
     @classmethod
-    def banner_combined_query(cls, session, campaign_id: int, X: int = 5):
+    def banner_combined_query(cls, session, campaign_id: int, X: int = 5, quarter_hour: int = 1):
         try:
             revenue_banners = (
                 session.query(
@@ -88,6 +88,7 @@ class Conversions(Base):
                 )
                 .join(cls, cls.click_id == Clicks.click_id)
                 .filter(Clicks.campaign_id == campaign_id)
+                .filter(cls.quarter_hour == quarter_hour)  # Add dynamic WHERE statement for quarter_hour column
                 .group_by(Clicks.banner_id)
                 .order_by(func.sum(cls.revenue).desc())
                 .limit(X)
@@ -100,6 +101,7 @@ class Conversions(Base):
                     func.count().label('total_clicks')
                 )
                 .filter(Clicks.campaign_id == campaign_id)
+                .filter(Clicks.quarter_hour == quarter_hour)  # Add dynamic WHERE statement for quarter_hour column
                 .group_by(Clicks.banner_id)
                 .order_by(func.count().desc())
                 .limit(5 - X)

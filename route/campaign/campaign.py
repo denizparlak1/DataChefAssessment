@@ -15,7 +15,6 @@ router = APIRouter(prefix="/campaigns")
 async def get_banner_count(request: Request, campaign_id: int, db: Session = Depends(get_db)):
     quarter = await get_quarter()
 
-    print(request.cookies.get("unique_id"))
     unique_id, exclude_banner_ids = get_unique_id(request.cookies.get("unique_id"))
 
     banner_count = Conversions.get_banner_count_for_campaign(db, campaign_id, quarter.value)
@@ -24,9 +23,9 @@ async def get_banner_count(request: Request, campaign_id: int, db: Session = Dep
     elif 5 <= banner_count < 10:
         top_banners = Conversions.get_top_banners_by_revenue(db, campaign_id, limit=banner_count)
     elif 1 <= banner_count < 5:
-        top_banners = Conversions.banner_combined_query(db, campaign_id, limit=banner_count)
+        top_banners = Conversions.banner_combined_query(db, campaign_id, limit=banner_count,quarter_hour=quarter.value)
     else:
-        top_banners = Impressions.get_top_banners_by_clicks(db,campaign_id, banner_count)
+        top_banners = Impressions.get_top_banners_by_clicks(db,campaign_id, banner_count,quarter_hour=quarter.value)
 
     image_urls = Images.get_image_urls(top_banners, db)
 

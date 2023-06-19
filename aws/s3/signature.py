@@ -40,5 +40,4 @@ def generate_signed_urls(bucket_name, image_paths, expiration=3600):
 
         # Append the signed URL to the list
         signed_urls.append(signed_url)
-    print(signed_urls)
     return signed_urls

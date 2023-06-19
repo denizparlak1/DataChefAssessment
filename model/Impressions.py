@@ -15,17 +15,18 @@ class Impressions(Base):
     campaign_id = Column(Double)
 
     @staticmethod
-    def get_top_banners_by_clicks(db, campaign_id: int, top_count: int) -> List[int]:
+    def get_top_banners_by_clicks(db, campaign_id: int, top_count: int, quarter_hour: int = 1) -> List[int]:
         try:
             query = db.query(Clicks.banner_id) \
                 .outerjoin(Clicks, Clicks.banner_id == Impressions.banner_id) \
-                .filter(Impressions.campaign_id == campaign_id) \
-                .group_by(Impressions.banner_id) \
+                .filter(Clicks.campaign_id == campaign_id) \
+                .filter(Clicks.quarter_hour == quarter_hour).group_by(Impressions.banner_id) \
                 .order_by(func.count(Clicks.click_id).desc()) \
                 .limit(top_count)
             results = query.all()
             top_banners = [banner_id for banner_id, _ in results]
             return top_banners
+
         except SQLAlchemyError as e:
             # Handle exception
             print(f"An error occurred: {e}")
